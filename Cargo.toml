@@ -1,0 +1,32 @@
+[package]
+name = "appgen"
+version = "0.1.0"
+authors = ["Matt Woodyard <matt@mattwoodyard.com>"]
+
+[dependencies]
+toml = "*"
+serde = "*"
+serde_derive = "*"
+serde_json = "*"
+nom = "*"
+rson_rs = "*"
+clap = "*"
+
+
+[[bin]]
+name = "toml2json"
+path = "src/main.rs"
+
+[[bin]]
+name = "toml2sql"
+path = "src/loader.rs"
+
+
+[[bin]]
+name = "viewgen"
+path = "src/viewgen.rs"
+
+
+[[bin]]
+name = "objectdef"
+path = "src/objectdef.rs"

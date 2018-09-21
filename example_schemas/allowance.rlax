@@ -1,0 +1,39 @@
+/* TODO(matt) - Target the following, by relaxing the parsing in rson-rs to allow
+ *  unterminated string literals
+*/
+{ tables: [
+  (chore_instance, [
+    (id, BigSerialPk, {}),
+    (chore_id, Integer, {}),
+    (chore_timestamp, Timestamp(None), {}),
+    (chore_status, String(8), {}),
+    (chore_pd, Boolean, {}),
+  ]),
+  (chore_definition, [
+    (id, BigSerialPk, {}),
+    (name, String(256), {label: Chore Name}),
+    (instance_value, Numeric, {label: Allowance Pay}),
+  ])
+  ],
+  views: [
+    { source: {name: chore_definition, override_query: None},
+      view: List,
+      field_order: [name, instance_value],
+      actions: [{name: Edit}]
+    },
+    { source: {name: chore_definition, override_query: None},
+      view: Edit,
+      field_order: [name, instance_value],
+    }
+    { source: {name: chore_definition, override_query: None},
+      view: Create,
+      field_order: [name, instance_value],
+    }
+  ],
+  relationships: [
+    { from: Many(chore_instance, chore_id), to: One(chore_definition, id) } 
+  ],
+  api: [],
+  acl: [],
+}
+

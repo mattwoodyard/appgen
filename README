@@ -1,0 +1,11 @@
+
+
+* Goal
+Write a schema, get an full functioning webapp.
+
+Currently makes use of postgrest and react-admin.
+
+Long term, also targetting aws lambda and a purescript frontend.
+
+
+
